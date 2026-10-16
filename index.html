@@ -1,0 +1,406 @@
+PLACEHOLDER_TEST<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jake’s Jobs · Asesorías académicas</title>
+<meta name="description" content="Asesorías académicas para universitarios en Quito y todo Ecuador.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Colores del CRM: lavanda, violeta, tinta y rosa. Estética iOS: vidrio esmerilado, radios grandes, movimiento con resorte. */
+:root{
+  --fondo:#F4F1FB; --tinta:#1E1033; --suave:#4E3F6B; --lav:#A78BFA; --vio:#6D28D9; --rosa:#DB2777; --ambar:#F59E0B;
+  --vidrio:rgba(255,255,255,.62); --borde:rgba(109,40,217,.12);
+  --f:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",system-ui,"Segoe UI",sans-serif;--fd:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Inter Tight","Inter",system-ui,sans-serif;
+  --resorte:cubic-bezier(.32,1.6,.5,1); --suavizado:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:18px/1.6 var(--f);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.aurora{position:fixed;inset:-20vmax;z-index:0;pointer-events:none;filter:blur(70px);opacity:.75}
+.aurora i{position:absolute;border-radius:50%;animation:flotar 18s ease-in-out infinite alternate}
+.aurora i:nth-child(1){width:46vmax;height:46vmax;left:8%;top:4%;background:#C4B5FD}
+.aurora i:nth-child(2){width:38vmax;height:38vmax;right:2%;top:18%;background:#F9A8D4;animation-delay:-6s}
+.aurora i:nth-child(3){width:34vmax;height:34vmax;left:30%;bottom:0;background:#DDD6FE;animation-delay:-12s}
+@keyframes flotar{to{transform:translate(6vmax,-4vmax) scale(1.12)}}
+.lienzo{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:0 max(18px,env(safe-area-inset-right)) 140px max(18px,env(safe-area-inset-left))}
+/* Barra superior de vidrio */
+.barra{position:sticky;top:max(10px,env(safe-area-inset-top));z-index:20;margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 12px 10px 16px;border-radius:22px;background:var(--vidrio);backdrop-filter:saturate(180%) blur(22px);-webkit-backdrop-filter:saturate(180%) blur(22px);border:1px solid rgba(255,255,255,.7);box-shadow:0 8px 30px rgba(30,16,51,.06)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--fd);font-size:20px;font-weight:900;letter-spacing:-.03em}
+.logo svg{width:30px;height:30px}
+.pildora{border:0;cursor:pointer;font:600 14px var(--f);color:#fff;background:var(--tinta);padding:10px 16px;border-radius:999px;transition:transform .35s var(--resorte)}
+.pildora:active{transform:scale(.94)}
+/* Portada */
+.portada{padding:64px 4px 32px;display:grid;gap:18px;max-width:780px}
+.insignia{justify-self:start;display:inline-flex;align-items:center;gap:8px;font:700 15px var(--f);color:var(--vio);background:rgba(255,255,255,.7);border:1px solid var(--borde);padding:6px 12px 6px 8px;border-radius:999px;backdrop-filter:blur(12px)}
+.insignia b{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.18);animation:pulso 2s infinite}
+@keyframes pulso{50%{box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+h1{margin:0;font-family:var(--fd);font-size:clamp(46px,8.6vw,96px);line-height:.98;letter-spacing:-.05em;font-weight:900;text-wrap:balance}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--vio),var(--rosa) 60%,var(--ambar));-webkit-background-clip:text;background-clip:text;color:transparent}
+.portada p{margin:0;font-size:clamp(19px,2.4vw,23px);line-height:1.5;color:var(--suave);max-width:48ch}
+.acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:700 18px var(--f);padding:17px 26px;border-radius:16px;text-decoration:none;transition:transform .4s var(--resorte),box-shadow .3s}
+.btn:active{transform:scale(.95)}
+.btn.pri{color:#fff;background:linear-gradient(135deg,var(--vio),#8B5CF6);box-shadow:0 12px 30px rgba(109,40,217,.32)}
+.btn.pri:hover{box-shadow:0 16px 40px rgba(109,40,217,.42)}
+.btn.sec{color:var(--tinta);background:rgba(255,255,255,.75);border:1px solid var(--borde);backdrop-filter:blur(12px)}
+.btn:focus-visible,.pildora:focus-visible,.serv:focus-visible,.chip:focus-visible{outline:3px solid var(--rosa);outline-offset:3px}
+.datos{display:flex;flex-wrap:wrap;gap:30px;margin-top:12px;color:var(--suave);font-size:16px;font-weight:500}
+.datos b{display:block;color:var(--tinta);font-family:var(--fd);font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+/* Cinta de universidades */
+.presencia{margin:26px 0 8px}
+.presencia h2{font-size:15px;font-weight:800 !important;letter-spacing:.14em;text-transform:uppercase;color:var(--suave);font-weight:600;margin:0 4px 14px}
+.cinta{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.pista{display:flex;gap:14px;width:max-content;animation:cinta 38s linear infinite}
+.cinta:hover .pista{animation-play-state:paused}
+@keyframes cinta{to{transform:translateX(-50%)}}
+.uni{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 12px;border-radius:20px;background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(14px);white-space:nowrap;transition:transform .5s var(--resorte)}
+.uni:hover{transform:translateY(-4px) scale(1.03)}
+.sello{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;font:800 13px var(--f);letter-spacing:-.02em;color:#fff;background:var(--tinta)}
+.uni:nth-child(4n+2) .sello{background:var(--vio)}.uni:nth-child(4n+3) .sello{background:var(--rosa)}.uni:nth-child(4n) .sello{background:#8B5CF6}
+.uni span{font-size:15px;color:var(--suave)}.uni strong{display:block;font-family:var(--fd);font-size:18px;font-weight:800;color:var(--tinta)}
+.aviso-legal{font-size:14px;color:var(--suave);margin:10px 4px 0;opacity:.8}
+/* Secciones */
+.titulo{margin:72px 4px 18px;display:grid;gap:6px}
+.titulo h2{margin:0;font-family:var(--fd);font-weight:900;font-size:clamp(34px,5.6vw,60px);letter-spacing:-.045em;line-height:1.02}
+.titulo p{margin:0;color:var(--suave);font-size:19px}
+.rejilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.serv{position:relative;display:grid;gap:10px;align-content:start;text-align:left;cursor:pointer;border:1px solid rgba(255,255,255,.85);background:var(--vidrio);backdrop-filter:saturate(160%) blur(18px);-webkit-backdrop-filter:saturate(160%) blur(18px);
+  border-radius:26px;padding:22px;font:inherit;color:inherit;box-shadow:0 1px 0 rgba(255,255,255,.9) inset,0 10px 30px rgba(30,16,51,.05);transition:transform .55s var(--resorte),box-shadow .35s}
+.serv:hover{transform:translateY(-6px);box-shadow:0 1px 0 #fff inset,0 22px 50px rgba(109,40,217,.14)}
+.serv:active{transform:scale(.97)}
+.icono{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:22px;background:linear-gradient(135deg,var(--vio),var(--rosa));box-shadow:0 8px 18px rgba(219,39,119,.25)}
+.serv:nth-child(3n+2) .icono{background:linear-gradient(135deg,#8B5CF6,var(--lav))}
+.serv:nth-child(3n) .icono{background:linear-gradient(135deg,var(--tinta),var(--vio))}
+.serv h3{margin:4px 0 0;font-family:var(--fd);font-size:24px;font-weight:800;letter-spacing:-.025em}
+.serv p{margin:0;color:var(--suave);font-size:17px}
+.serv .mas{font-size:16px;font-weight:700;color:var(--vio)}
+.extra{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:14px}
+.extra div{border-radius:22px;padding:20px 22px;font-size:17px;background:var(--tinta);color:#EDE9FE;display:flex;gap:14px;align-items:center}
+.extra b{color:#fff}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;counter-reset:p}
+.paso{border-radius:26px;padding:22px;background:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(14px)}
+.paso::before{counter-increment:p;content:counter(p);display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--fondo);color:var(--vio);font-weight:800;margin-bottom:12px}
+.paso h3{margin:0 0 6px;font-family:var(--fd);font-size:24px;font-weight:800;letter-spacing:-.025em}.paso p{margin:0;color:var(--suave);font-size:17px}
+.cierre{margin-top:72px;border-radius:32px;padding:44px 28px;text-align:center;color:#fff;background:linear-gradient(140deg,var(--tinta),var(--vio) 60%,var(--rosa));position:relative;overflow:hidden}
+.cierre h2{margin:0 0 12px;font-family:var(--fd);font-weight:900;font-size:clamp(36px,6vw,64px);letter-spacing:-.045em;line-height:1.02}
+.cierre p{margin:0 auto 26px;max-width:40ch;color:#EDE9FE;font-size:20px}
+.cierre .btn.pri{background:#fff;color:var(--tinta);box-shadow:0 14px 36px rgba(0,0,0,.25)}
+.faq{display:grid;gap:10px}
+.faq details{border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.85);backdrop-filter:blur(14px);padding:16px 20px}
+.faq summary{cursor:pointer;font-family:var(--fd);font-size:20px;font-weight:800;letter-spacing:-.02em;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::after{content:'+';color:var(--vio);font-size:22px;line-height:1;transition:transform .3s var(--resorte)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{margin:10px 0 0;color:var(--suave)}
+.pie{text-align:center;color:var(--suave);font-size:15px;margin-top:36px;display:grid;gap:6px}
+.pie a{color:var(--vio);text-decoration:none;font-weight:600}
+/* Botón flotante tipo Dynamic Island */
+.isla{position:fixed;z-index:30;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px 8px 8px 18px;border-radius:999px;background:rgba(30,16,51,.92);color:#fff;backdrop-filter:blur(20px);box-shadow:0 18px 40px rgba(30,16,51,.35);font:600 14px var(--f);transition:transform .6s var(--resorte),opacity .4s}
+.isla.oculta{transform:translate(-50%,140%);opacity:0}
+.isla a{display:inline-flex;align-items:center;gap:8px;background:#22C55E;color:#06260F;text-decoration:none;padding:10px 16px;border-radius:999px;font-weight:700}
+/* Hoja inferior (sheet) */
+.velo{position:fixed;inset:0;z-index:40;background:rgba(30,16,51,.28);backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .35s}
+.velo.abierto{opacity:1;pointer-events:auto}
+.hoja{position:fixed;z-index:50;left:50%;bottom:0;width:min(560px,100%);transform:translate(-50%,105%);background:rgba(255,255,255,.94);backdrop-filter:blur(30px) saturate(180%);
+  border-radius:30px 30px 0 0;padding:10px 22px calc(24px + env(safe-area-inset-bottom));box-shadow:0 -20px 60px rgba(30,16,51,.25);visibility:hidden;transition:transform .6s var(--resorte),visibility 0s .6s}
+.hoja.abierta{transform:translate(-50%,0);visibility:visible;transition:transform .6s var(--resorte),visibility 0s}
+.cerrar-hoja{position:absolute;top:14px;right:16px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(109,40,217,.08);color:var(--tinta);font:600 26px/1 var(--f);cursor:pointer}
+.hoja input:focus-visible,.hoja select:focus-visible,.faq summary:focus-visible,.isla a:focus-visible,.cerrar-hoja:focus-visible{outline:3px solid var(--rosa);outline-offset:2px}
+.isla a{min-height:44px}
+.agarre{width:42px;height:5px;border-radius:9px;background:#D9D2EA;margin:4px auto 16px}
+.hoja h3{margin:0;font-family:var(--fd);font-size:30px;font-weight:900;letter-spacing:-.04em}
+.hoja .sub{margin:4px 0 18px;color:var(--suave);font-size:17px}
+.etq{font-size:13px;font-weight:600;color:var(--suave);margin:14px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--borde);background:#fff;border-radius:999px;padding:9px 14px;font:600 14px var(--f);color:var(--tinta);cursor:pointer;transition:transform .35s var(--resorte),background .2s}
+.chip:active{transform:scale(.93)}
+.chip[aria-pressed="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.form-hoja{display:grid;gap:12px}.form-hoja label{display:grid;gap:6px;font-size:15px;font-weight:600;color:var(--suave)}
+.form-hoja .dos{display:grid;grid-template-columns:1.4fr 1fr;gap:10px}
+.hoja select{width:100%;border:1px solid var(--borde);border-radius:14px;padding:13px 12px;font:16px var(--f);background:#fff;color:var(--tinta)}
+.err{margin:0;color:var(--rosa);font-size:14px;font-weight:600}.priv{margin:10px 0 0;text-align:center;font-size:14px;color:var(--suave)}
+.hoja input{width:100%;border:1px solid var(--borde);border-radius:14px;padding:13px 14px;font:16px var(--f);background:#fff;color:var(--tinta)}
+.hoja .btn.pri{width:100%;justify-content:center;margin-top:20px;background:#22C55E;color:#06260F;box-shadow:0 12px 28px rgba(34,197,94,.3)}
+/* Aparición suave al hacer scroll (estado visible por defecto) */
+.js .revelar{opacity:0;transform:translateY(26px) scale(.98);transition:opacity .9s var(--suavizado),transform .9s var(--suavizado)}
+.js .revelar.visto{opacity:1;transform:none}
+/* ---------- Temporada de Halloween (mismos colores) ---------- */
+.hw{display:none}
+body.halloween .hw{display:block}
+body.halloween .insignia .hw{display:inline!important}
+body.halloween h1.hw,body.halloween h2.hw{display:block}
+body.halloween .solo-normal{display:none}
+.luna{position:fixed;z-index:0;top:90px;right:6vw;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 38% 38%,#FFF7ED,#FBCFE8 55%,#C4B5FD);box-shadow:0 0 90px 30px rgba(196,181,253,.55);opacity:.85;pointer-events:none}
+.murcielagos{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.murcielagos svg{position:absolute;width:64px;fill:var(--tinta);opacity:.8;animation:volar 16s linear infinite}
+.murcielagos svg:nth-child(2){width:30px;top:22%;animation-duration:21s;animation-delay:-7s;fill:var(--vio)}
+.murcielagos svg:nth-child(3){width:38px;top:58%;animation-duration:25s;animation-delay:-13s}
+.murcielagos svg:nth-child(4){width:24px;top:12%;animation-duration:19s;animation-delay:-3s;fill:var(--rosa)}
+.murcielagos svg:nth-child(1){top:34%}
+@keyframes volar{0%{transform:translate(-10vw,0) scaleY(1)}10%{transform:translate(4vw,-14px) scaleY(.7)}20%{transform:translate(18vw,8px) scaleY(1)}40%{transform:translate(42vw,-22px) scaleY(.7)}60%{transform:translate(66vw,10px) scaleY(1)}80%{transform:translate(90vw,-16px) scaleY(.7)}100%{transform:translate(112vw,0) scaleY(1)}}
+.telarana{position:fixed;z-index:2;top:0;left:0;width:150px;opacity:.35;pointer-events:none}
+.calabaza{display:inline-block;animation:balanceo 3s ease-in-out infinite;transform-origin:50% 90%}
+@keyframes balanceo{50%{transform:rotate(-8deg)}}
+body.halloween .cierre{background:linear-gradient(140deg,#120A22,var(--tinta) 40%,var(--vio) 75%,var(--rosa))}
+body.halloween .cierre::after{content:"🎃";position:absolute;right:22px;bottom:14px;font-size:54px;opacity:.9;animation:balanceo 3s ease-in-out infinite}
+.cinta-hw{margin:4px 0 0;border-radius:20px;padding:18px 22px;font-size:18px;background:rgba(30,16,51,.9);color:#EDE9FE;display:flex;gap:12px;align-items:center;backdrop-filter:blur(12px)}
+.cinta-hw b{color:#fff}
+
+/* ---------- Mascota de Halloween: el bromista de la linterna (personaje original) ---------- */
+.mascota{position:fixed;z-index:0;left:0;top:0;width:min(62vw,720px);height:min(62vh,600px);overflow:hidden;opacity:.95;pointer-events:none;will-change:transform;display:none}
+body.halloween .mascota{display:block}
+.mascota{-webkit-mask-image:linear-gradient(#000 82%,transparent);mask-image:linear-gradient(#000 82%,transparent)}
+.mascota img{width:100%;height:200%;object-fit:contain;object-position:50% 0;filter:drop-shadow(0 20px 22px rgba(30,16,51,.35)) drop-shadow(0 0 18px rgba(167,139,250,.45));transition:transform .45s var(--resorte)}
+.mascota.flota img{animation:respira 2.6s ease-in-out infinite}
+@keyframes respira{50%{transform:translateY(-18px) rotate(-1.5deg)}}
+.mascota.gira img{animation:gira .8s var(--resorte)}
+@keyframes gira{to{transform:rotate(360deg) scale(1.1)}}
+.mascota.salta img{animation:salta .7s var(--resorte)}
+@keyframes salta{40%{transform:translateY(-60px) scale(1.12,.9)}70%{transform:translateY(0) scale(.92,1.1)}}
+.boca{position:fixed;inset:0;z-index:70;display:grid;place-items:center;pointer-events:none;opacity:0;background:radial-gradient(circle,rgba(30,16,51,.35),rgba(10,4,20,.92) 70%)}
+.boca img{height:min(92vh,900px);transform:scale(.2) translateY(30%);filter:drop-shadow(0 0 60px rgba(167,139,250,.8))}
+.boca.on{opacity:1;transition:opacity .08s}
+.boca.on img{animation:embestida .9s cubic-bezier(.2,1.6,.3,1) forwards}
+@keyframes embestida{0%{transform:scale(.2) translateY(30%)}35%{transform:scale(1.35) translateY(0)}55%{transform:scale(1.2) translateY(0) rotate(-3deg)}75%{transform:scale(1.28) rotate(3deg)}100%{transform:scale(1.25)}}
+.destello{position:fixed;inset:0;z-index:60;pointer-events:none;background:radial-gradient(circle,rgba(30,16,51,.0),rgba(30,16,51,.75));opacity:0;transition:opacity .12s}
+.destello.on{opacity:1}
+body.tiembla .lienzo{animation:tiembla .4s linear}
+@keyframes tiembla{20%{transform:translate(-6px,3px)}40%{transform:translate(5px,-4px)}60%{transform:translate(-4px,2px)}80%{transform:translate(3px,-2px)}}
+.dulce{position:fixed;z-index:61;pointer-events:none;font-size:28px;will-change:transform}
+.globo-m{position:fixed;z-index:56;pointer-events:none;background:#fff;color:var(--tinta);font:700 14px var(--f);padding:8px 12px;border-radius:16px;box-shadow:0 10px 24px rgba(30,16,51,.18);opacity:0;transform:scale(.6);transition:opacity .2s,transform .35s var(--resorte);white-space:nowrap}
+.globo-m.on{opacity:1;transform:scale(1)}
+@media (prefers-reduced-motion:reduce){.mascota{display:none!important}}
+
+@media (prefers-reduced-motion:reduce){*,*::before{animation:none!important;transition:none!important}.js .revelar{opacity:1;transform:none}}
+@media (max-width:560px){.portada{padding-top:40px}.barra .pildora{padding:9px 13px}}
+@media (prefers-reduced-motion:reduce){.mascota,.boca{display:none!important}}
+</style>
+</head>
+<body class="halloween">
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="hw luna" aria-hidden="true"></div>
+<svg class="hw telarana" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#1E1033" stroke-width=".8"><path d="M0 0 L100 30M0 0 L70 70M0 0 L30 100"/><path d="M0 20 Q12 14 20 6M0 42 Q24 30 38 12M0 64 Q38 46 56 18M0 86 Q50 62 74 22"/></g></svg>
+<div class="hw murcielagos" aria-hidden="true"><svg viewBox="0 0 64 32"><path d="M32 10c2-4 4-6 4-6l1 5c3-1 6 0 8 3 4-3 10-4 15-2-4 2-6 6-6 10-3-3-7-3-10 0 0-3-3-5-6-5l-6 7-6-7c-3 0-6 2-6 5-3-3-7-3-10 0 0-4-2-8-6-10 5-2 11-1 15 2 2-3 5-4 8-3l1-5s2 2 4 6z"/></svg><svg viewBox="0 0 64 32"><path d="M32 10c2-4 4-6 4-6l1 5c3-1 6 0 8 3 4-3 10-4 15-2-4 2-6 6-6 10-3-3-7-3-10 0 0-3-3-5-6-5l-6 7-6-7c-3 0-6 2-6 5-3-3-7-3-10 0 0-4-2-8-6-10 5-2 11-1 15 2 2-3 5-4 8-3l1-5s2 2 4 6z"/></svg><svg viewBox="0 0 64 32"><path d="M32 10c2-4 4-6 4-6l1 5c3-1 6 0 8 3 4-3 10-4 15-2-4 2-6 6-6 10-3-3-7-3-10 0 0-3-3-5-6-5l-6 7-6-7c-3 0-6 2-6 5-3-3-7-3-10 0 0-4-2-8-6-10 5-2 11-1 15 2 2-3 5-4 8-3l1-5s2 2 4 6z"/></svg><svg viewBox="0 0 64 32"><path d="M32 10c2-4 4-6 4-6l1 5c3-1 6 0 8 3 4-3 10-4 15-2-4 2-6 6-6 10-3-3-7-3-10 0 0-3-3-5-6-5l-6 7-6-7c-3 0-6 2-6 5-3-3-7-3-10 0 0-4-2-8-6-10 5-2 11-1 15 2 2-3 5-4 8-3l1-5s2 2 4 6z"/></svg></div>
+<div class="lienzo">
+  <header class="barra">
+    <div class="logo">
+      <span>Jake’s Jobs</span>
+    </div>
+    <button class="pildora" data-abrir="Información general">Escríbenos</button>
+  </header>
+
+  <section class="portada revelar">
+    <span class="insignia"><b></b> <span class="solo-normal">Respondemos hoy mismo</span><span class="hw" style="display:none" data-hw>Temporada de Halloween 🎃 cupos abiertos</span></span>
+    <h1 class="solo-normal">Que ninguna materia te <em>quite el sueño.</em></h1>
+    <h1 class="hw">Que los deberes <em>no te den miedo.</em> <span class="calabaza" aria-hidden="true">🎃</span></h1>
+    <p>Asesorías académicas para universitarios en Quito y todo Ecuador. Te acompañamos paso a paso, a tiempo y sin juzgar.</p>
+    <div class="acciones">
+      <button class="btn pri" data-abrir="Información general">Escríbenos por WhatsApp</button>
+      <a class="btn sec" href="#servicios">Ver servicios</a>
+    </div>
+    <div class="datos"><div><b>+10</b>universidades</div><div><b>Quito</b>y todo Ecuador</div><div><b>Hoy</b>te respondemos</div></div>
+  </section>
+
+  <div class="hw cinta-hw revelar"><span style="font-size:26px">🦇</span><span><b>Especial de Halloween:</b> que nada te asuste este semestre. Escríbenos y armamos juntos tu plan antes de las evaluaciones.</span></div>
+  <section class="presencia revelar" aria-label="Universidades">
+    <h2>Acompañamos a estudiantes de</h2>
+    <div class="cinta"><div class="pista"><div class="uni"><div class="sello">UCE</div><div><strong>UCE</strong><span>Universidad Central del Ecuador</span></div></div><div class="uni"><div class="sello">PUCE</div><div><strong>PUCE</strong><span>Pontificia Universidad Católica</span></div></div><div class="uni"><div class="sello">ESPE</div><div><strong>ESPE</strong><span>Universidad de las Fuerzas Armadas</span></div></div><div class="uni"><div class="sello">EPN</div><div><strong>EPN</strong><span>Escuela Politécnica Nacional</span></div></div><div class="uni"><div class="sello">USFQ</div><div><strong>USFQ</strong><span>Universidad San Francisco de Quito</span></div></div><div class="uni"><div class="sello">UDLA</div><div><strong>UDLA</strong><span>Universidad de Las Américas</span></div></div><div class="uni"><div class="sello">UIDE</div><div><strong>UIDE</strong><span>Universidad Internacional del Ecuador</span></div></div><div class="uni"><div class="sello">UTE</div><div><strong>UTE</strong><span>Universidad UTE</span></div></div><div class="uni"><div class="sello">UPS</div><div><strong>UPS</strong><span>Universidad Politécnica Salesiana</span></div></div><div class="uni"><div class="sello">UISEK</div><div><strong>UISEK</strong><span>Universidad Internacional SEK</span></div></div><div class="uni"><div class="sello">UTPL</div><div><strong>UTPL</strong><span>Universidad Técnica Particular de Loja</span></div></div><div class="uni"><div class="sello">UTM</div><div><strong>UTM</strong><span>Universidad Técnica de Manabí</span></div></div><div class="uni"><div class="sello">UCE</div><div><strong>UCE</strong><span>Universidad Central del Ecuador</span></div></div><div class="uni"><div class="sello">PUCE</div><div><strong>PUCE</strong><span>Pontificia Universidad Católica</span></div></div><div class="uni"><div class="sello">ESPE</div><div><strong>ESPE</strong><span>Universidad de las Fuerzas Armadas</span></div></div><div class="uni"><div class="sello">EPN</div><div><strong>EPN</strong><span>Escuela Politécnica Nacional</span></div></div><div class="uni"><div class="sello">USFQ</div><div><strong>USFQ</strong><span>Universidad San Francisco de Quito</span></div></div><div class="uni"><div class="sello">UDLA</div><div><strong>UDLA</strong><span>Universidad de Las Américas</span></div></div><div class="uni"><div class="sello">UIDE</div><div><strong>UIDE</strong><span>Universidad Internacional del Ecuador</span></div></div><div class="uni"><div class="sello">UTE</div><div><strong>UTE</strong><span>Universidad UTE</span></div></div><div class="uni"><div class="sello">UPS</div><div><strong>UPS</strong><span>Universidad Politécnica Salesiana</span></div></div><div class="uni"><div class="sello">UISEK</div><div><strong>UISEK</strong><span>Universidad Internacional SEK</span></div></div><div class="uni"><div class="sello">UTPL</div><div><strong>UTPL</strong><span>Universidad Técnica Particular de Loja</span></div></div><div class="uni"><div class="sello">UTM</div><div><strong>UTM</strong><span>Universidad Técnica de Manabí</span></div></div></div></div>
+    <p class="aviso-legal">Trabajamos con estudiantes de estas universidades. No somos parte de ellas ni estamos afiliados oficialmente.</p>
+  </section>
+
+  <section id="servicios">
+    <div class="titulo revelar"><h2>¿En qué te acompañamos?</h2><p>Toca un servicio y cuéntanos tu caso en 10 segundos.</p></div>
+    <div class="rejilla"><button class="serv revelar" data-abrir="Ensayos"><span class="icono">✍️</span><h3>Ensayos</h3><p>Estructura, argumentación y citas en normas APA.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Resúmenes"><span class="icono">📝</span><h3>Resúmenes</h3><p>Lo esencial de tus lecturas, claro y ordenado.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Proyectos"><span class="icono">🧩</span><h3>Proyectos</h3><p>Planteamiento, desarrollo y presentación.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Artículos"><span class="icono">📰</span><h3>Artículos</h3><p>Redacción académica lista para revisión.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Tesis y TMF"><span class="icono">🎓</span><h3>Tesis y TMF</h3><p>Metodología, capítulos y acompañamiento hasta la defensa.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Estadística inferencial"><span class="icono">📊</span><h3>Estadística inferencial</h3><p>Ejercicios, SPSS, R y análisis de datos.</p><span class="mas">Pedir ayuda →</span></button><button class="serv revelar" data-abrir="Preparación de evaluaciones"><span class="icono">🎯</span><h3>Preparación de evaluaciones</h3><p>Repasos y práctica antes de parciales y finales.</p><span class="mas">Pedir ayuda →</span></button></div>
+    <div class="extra revelar">
+      <div><span style="font-size:26px">🛡️</span><span><b>Informe de Turnitin</b><br>Revisión de similitud e IA antes de entregar.</span></div>
+      <div><span style="font-size:26px">🔁</span><span><b>Correcciones sin costo</b><br>Ajustamos hasta que quede como lo necesitas.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="titulo revelar"><h2>Así de simple</h2><p>Sin formularios largos ni esperas.</p></div>
+    <div class="pasos">
+      <div class="paso revelar"><h3>Cuéntanos</h3><p>Elige el servicio, deja tu nombre y tu universidad.</p></div>
+      <div class="paso revelar"><h3>Te proponemos</h3><p>Cómo lo trabajamos, el tiempo y el valor. Sin compromiso.</p></div>
+      <div class="paso revelar"><h3>Avanzamos juntos</h3><p>Te acompañamos hasta la entrega, con correcciones incluidas.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="titulo revelar"><h2>Preguntas frecuentes</h2></div>
+    <div class="faq revelar">
+      <details><summary>¿Cuánto cuesta?</summary><p>Depende del tipo de trabajo, la extensión y el plazo. Cuéntanos tu caso y te cotizamos al momento, sin compromiso.</p></details>
+      <details><summary>¿En cuánto tiempo responden?</summary><p>Respondemos el mismo día por WhatsApp. Si es urgente, dilo en tu mensaje.</p></details>
+      <details><summary>¿Incluye correcciones?</summary><p>Sí. Las correcciones no tienen costo adicional hasta que quede como lo necesitas.</p></details>
+      <details><summary>¿Mis datos son confidenciales?</summary><p>Sí. Usamos tus datos solo para atender tu pedido y no los compartimos.</p></details>
+    </div>
+  </section>
+
+  <section class="cierre revelar">
+    <h2 class="solo-normal">No tienes que cargar con todo solo.</h2><h2 class="hw">¿Truco o trato? Mejor un trato 👻</h2>
+    <p>Escríbenos ahora y hoy mismo sabes cómo resolverlo.</p>
+    <button class="btn pri" data-abrir="Información general">Empezar por WhatsApp</button>
+  </section>
+
+  <footer class="pie">
+    <span>Jake’s Jobs · Asesorías académicas · +593 99 762 2392</span>
+    <a href="https://www.instagram.com/jakesjobs._/" target="_blank" rel="noopener">@jakesjobs._ en Instagram</a>
+  </footer>
+</div>
+
+<div class="mascota" id="mascota" aria-hidden="true"><img id="mImg" alt=""></div>
+<div class="boca" id="boca" aria-hidden="true"><img id="bocaImg" alt=""></div>
+<div class="globo-m" id="globoM" aria-hidden="true"></div>
+<div class="destello" id="destello"></div>
+<div class="isla oculta" id="isla"><span>¿Te ayudamos?</span><a href="#" data-abrir="Información general">WhatsApp</a></div>
+
+<div class="velo" id="velo"></div>
+<div class="hoja" id="hoja" role="dialog" aria-modal="true" aria-labelledby="hTitulo">
+  <div class="agarre"></div>
+  <button class="cerrar-hoja" type="button" aria-label="Cerrar" id="hCerrar">×</button>
+  <h3 id="hTitulo">Servicio</h3>
+  <p class="sub">Déjanos tus datos y seguimos por WhatsApp. Toma 20 segundos.</p>
+  <form id="hForm" class="form-hoja" novalidate>
+    <label>Tu nombre<input id="hNombre" autocomplete="given-name" placeholder="Ej.: Daniela" required></label>
+    <label>Universidad<select id="hUni" required><option value="">Elige…</option></select></label>
+    <div class="dos"><label>Carrera<input id="hCarrera" placeholder="Ej.: Psicología"></label>
+      <label>Semestre<select id="hSemestre"><option value="">—</option><option>1.º</option><option>2.º</option><option>3.º</option><option>4.º</option><option>5.º</option><option>6.º</option><option>7.º</option><option>8.º</option><option>9.º</option><option>10.º</option><option>Titulación</option><option>Posgrado</option></select></label></div>
+    <label>¿Qué necesitas? (opcional)<input id="hDetalle" placeholder="Ej.: ensayo de 5 páginas para el viernes"></label>
+    <p class="err" id="hErr" role="alert" hidden>Escribe tu nombre y elige tu universidad.</p>
+  <button class="btn pri" id="hEnviar" type="submit">Enviar por WhatsApp</button>
+  </form>
+  <p class="priv">Usamos tus datos solo para atender tu pedido.</p>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+const NUMERO='593997622392', MARCA='Vengo de la página de', NOMBRE='Jake’s Jobs';
+const UNIS=["UCE","PUCE","ESPE","EPN","USFQ","UDLA","UIDE","UTE","UPS","UISEK","UTPL","UTM"];
+let elegida={servicio:''};
+const $=(id)=>document.getElementById(id);
+UNIS.concat(['Otra']).forEach((u)=>{const o=document.createElement('option');o.textContent=u;$('hUni').append(o);});
+try{const g=JSON.parse(localStorage.getItem('jkDatos')||'{}');['hNombre','hUni','hCarrera','hSemestre'].forEach((k)=>{if(g[k])$(k).value=g[k];});}catch(_){}
+let foco0=null;
+function abrir(servicio){foco0=document.activeElement;document.querySelector('.lienzo').inert=true;elegida={servicio};$('hTitulo').textContent=servicio==='Información general'?'Hablemos 👋':'Pedir: '+servicio;$('hErr').hidden=true;
+  $('velo').classList.add('abierto');$('hoja').classList.add('abierta');setTimeout(()=>$(($('hNombre').value?'hDetalle':'hNombre')).focus(),400);}
+function cerrar(){$('velo').classList.remove('abierto');$('hoja').classList.remove('abierta');document.querySelector('.lienzo').inert=false;if(foco0&&foco0.focus)foco0.focus();}
+$('hCerrar').onclick=cerrar;
+document.addEventListener('click',(e)=>{const b=e.target.closest('[data-abrir]');if(b){e.preventDefault();abrir(b.dataset.abrir);}});
+$('velo').onclick=cerrar;document.addEventListener('keydown',(e)=>{if(e.key==='Escape')cerrar();});
+$('hForm').addEventListener('submit',(e)=>{e.preventDefault();
+  const v=(k)=>$(k).value.trim();
+  if(!v('hNombre')||!v('hUni')){$('hErr').hidden=false;$('hNombre').setAttribute('aria-invalid',!v('hNombre'));$('hUni').setAttribute('aria-invalid',!v('hUni'));(v('hNombre')?$('hUni'):$('hNombre')).focus();return;}
+  try{localStorage.setItem('jkDatos',JSON.stringify({hNombre:v('hNombre'),hUni:v('hUni'),hCarrera:v('hCarrera'),hSemestre:v('hSemestre')}));}catch(_){}
+  const t=`Hola 👋 ${MARCA} ${NOMBRE}. Necesito ayuda con: ${elegida.servicio}.\nNombre: ${v('hNombre')}\nUniversidad: ${v('hUni')}`+(v('hCarrera')?`\nCarrera: ${v('hCarrera')}`:'')+(v('hSemestre')?`\nSemestre: ${v('hSemestre')}`:'')+(v('hDetalle')?`\nDetalle: ${v('hDetalle')}`:'');
+  window.open(`https://wa.me/${NUMERO}?text=${encodeURIComponent(t)}`,'_blank','noopener');cerrar();});
+// Gesto de arrastre para cerrar la hoja (como en iOS)
+(()=>{let y0=null;const h=$('hoja');h.addEventListener('touchstart',(e)=>{y0=e.touches[0].clientY;},{passive:true});
+  h.addEventListener('touchmove',(e)=>{if(y0===null)return;const dy=Math.max(0,e.touches[0].clientY-y0);h.style.transition='none';h.style.transform=`translate(-50%,${dy}px)`;},{passive:true});
+  h.addEventListener('touchend',(e)=>{const dy=e.changedTouches[0].clientY-(y0??0);h.style.transition='';h.style.transform='';y0=null;if(dy>90)cerrar();});})();
+// Aparición al hacer scroll
+const io=new IntersectionObserver((es)=>es.forEach((x)=>{if(x.isIntersecting){x.target.classList.add('visto');io.unobserve(x.target);}}),{threshold:.12});
+document.querySelectorAll('.revelar').forEach((el,i)=>{el.style.transitionDelay=(i%4)*60+'ms';io.observe(el);});
+// Isla flotante: aparece al bajar
+addEventListener('scroll',()=>$('isla').classList.toggle('oculta',scrollY<420),{passive:true});
+
+
+// ---------- Mascota de Halloween: el bromista de la linterna ----------
+(() => {
+  if (!document.body.classList.contains('halloween') || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const IMG = {
+    normal: 'https://d8j0ntlcm91z4.cloudfront.net/user_3KceeHV7sh0rLWWiVf1yEIKbelE/hf_20261014_213603_c8144242-8139-442e-b65c-baa176f2cf8a.png',
+    susto: 'https://d8j0ntlcm91z4.cloudfront.net/user_3KceeHV7sh0rLWWiVf1yEIKbelE/hf_20261014_213602_5f368314-ae2d-48af-b3a0-9724b53223dd.png',
+    hoz: 'https://d8j0ntlcm91z4.cloudfront.net/user_3KceeHV7sh0rLWWiVf1yEIKbelE/hf_20261014_213603_1aa683dc-41eb-452e-afe9-5b3863314079.png',
+    dulces: 'https://d8j0ntlcm91z4.cloudfront.net/user_3KceeHV7sh0rLWWiVf1yEIKbelE/hf_20261014_213602_10753fa6-56e7-45ba-88f6-6554d6b725e4.png',
+  };
+  Object.values(IMG).forEach((u) => { const i = new Image(); i.src = u; });
+  const m = $('mascota'), img = $('mImg'), globo = $('globoM'), boca = $('boca');
+  img.src = IMG.normal; $('bocaImg').src = IMG.susto; m.classList.add('flota');
+  let x = innerWidth * .7, y = innerHeight * .4, tx = x, ty = y, mx = -1, my = -1, ocupado = false, t0 = performance.now(), ultimoSusto = 0, clics = 0;
+  addEventListener('pointermove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
+  // Movimiento: recorre la pagina en curvas y se acerca un poco al cursor; se inclina hacia donde va
+  function paso(t) {
+    const s = (t - t0) / 1000, mw = m.offsetWidth, mh = m.offsetHeight, W = innerWidth - mw, H = innerHeight - mh;
+    if (!ocupado) {
+      tx = W * (.8 + .18 * Math.sin(s * .07)); ty = innerHeight - mh * (.82 + .08 * Math.sin(s * .5));
+      if (mx >= 0) { tx += (mx - tx) * .04; }
+    }
+    const nx = x + (tx - x) * (ocupado ? .16 : .045), ny = y + (ty - y) * (ocupado ? .16 : .045);
+    const inclina = Math.max(-6, Math.min(6, (nx - x) * 1.2));
+    x = nx; y = ny;
+    m.style.transform = `translate(${x}px,${y}px) rotate(${inclina}deg) scaleX(${tx < x ? -1 : 1})`;
+    requestAnimationFrame(paso);
+  }
+  requestAnimationFrame(paso);
+  function decir(txt, ms = 1700) {
+    if ($('hoja').classList.contains('abierta')) return;
+    globo.textContent = txt; globo.style.left = '0px';
+    const w = globo.offsetWidth; globo.style.left = (x - w - 10 > 12 ? x - w + m.offsetWidth * .25 : Math.min(innerWidth - w - 12, x + m.offsetWidth * .7)) + 'px';
+    globo.style.top = Math.max(80, y + m.offsetHeight * .18) + 'px'; globo.classList.add('on');
+    clearTimeout(decir.t); decir.t = setTimeout(() => globo.classList.remove('on'), ms);
+  }
+  function pose(nombre, ms = 1400) { img.src = IMG[nombre]; clearTimeout(pose.t); pose.t = setTimeout(() => { img.src = IMG.normal; }, ms); }
+  function anim(clase) { m.classList.remove('gira', 'salta'); void m.offsetWidth; m.classList.add(clase); setTimeout(() => m.classList.remove(clase), 900); }
+  function irA() {}
+  // Boca gigante: susto a pantalla completa
+  function bocaGigante() {
+    if ($('hoja').classList.contains('abierta')) return;
+    ultimoSusto = Date.now(); boca.classList.remove('on'); void boca.offsetWidth; boca.classList.add('on');
+    document.body.classList.add('tiembla'); if (navigator.vibrate) navigator.vibrate([80, 40, 120]);
+    m.style.opacity = '0';
+    setTimeout(() => { boca.classList.remove('on'); document.body.classList.remove('tiembla'); m.style.opacity = '1'; decir('Jejeje… ¿te asusté? 👻'); }, 950);
+  }
+  function lluviaDulces(cx, cy) {
+    const c = ['🍬', '🍭', '🍫', '🍡', '🧁', '🍪'];
+    for (let i = 0; i < 30; i++) {
+      const d = document.createElement('span'); d.className = 'dulce'; d.textContent = c[i % c.length];
+      d.style.left = cx + 'px'; d.style.top = cy + 'px'; document.body.append(d);
+      const a = Math.random() * Math.PI * 2, v = 140 + Math.random() * 280;
+      d.animate([{ transform: 'translate(0,0) rotate(0)', opacity: 1 }, { transform: `translate(${Math.cos(a) * v}px,${Math.sin(a) * v - 140}px) rotate(${Math.random() * 720 - 360}deg)`, offset: .5, opacity: 1 },
+        { transform: `translate(${Math.cos(a) * v * 1.3}px,${innerHeight}px) rotate(${Math.random() * 900}deg)`, opacity: 0 }], { duration: 1900 + Math.random() * 700, easing: 'cubic-bezier(.2,.7,.4,1)' }).onfinish = () => d.remove();
+    }
+  }
+  // Se esconde detrás de una tarjeta visible y se asoma por encima
+  function esconderse() {
+    const visibles = [...document.querySelectorAll('.serv, .paso, .uni, .extra div, .faq details')].filter((el) => { const r = el.getBoundingClientRect(); return r.top > 120 && r.bottom < innerHeight - 40 && r.width > 120; });
+    if (!visibles.length) return false;
+    const el = visibles[Math.floor(Math.random() * visibles.length)], r = el.getBoundingClientRect();
+    const mw = m.offsetWidth, mh = m.offsetHeight;
+    ocupado = true; m.classList.remove('flota');
+    tx = Math.max(-mw * .2, Math.min(innerWidth - mw * .8, r.left + r.width / 2 - mw / 2));
+    ty = r.top - mh * .38;                 // solo se ve la cabeza por encima de la tarjeta
+    setTimeout(() => decir(['Psst… aquí estoy 👀', '¿Me buscabas? 😏', 'No me veas…', 'Jejeje 🎃'][Math.floor(Math.random() * 4)]), 1100);
+    setTimeout(() => { ocupado = false; m.classList.add('flota'); }, 5500);
+    return true;
+  }
+  addEventListener('scroll', () => { if (ocupado) ocupado = false; }, { passive: true });
+  // Respuestas segun lo que se selecciona en la pagina
+  document.addEventListener('click', (e) => {
+    const el = e.target.closest('button, a'); if (!el) return;
+    clics++;
+    const sorpresa = Date.now() - ultimoSusto > 20000 && (clics === 2 || Math.random() < .18);
+    if (el.id === 'hEnviar') { if (!$('hNombre').value.trim() || !$('hUni').value) return;  pose('dulces', 1800); lluviaDulces(innerWidth / 2, innerHeight - 140); decir('¡Trato hecho! Toma dulces 🍬', 2000); return; }
+    if (sorpresa) { bocaGigante(); return; }
+    if (el.classList.contains('serv')) { irA(el, -40); pose('hoz', 1400); decir('Ese servicio… ¡excelente elección! 😈'); return; }
+    if (el.getAttribute('href') === '#servicios') { anim('gira'); decir('¡Sígueme, te muestro todo! 🦇'); return; }
+    anim('salta'); decir(['¡Buu!', '¿Truco o trato? 🎃', 'Jejeje…', '¡Te estoy vigilando! 👀'][clics % 4]);
+  }, true);
+  // Se asoma cuando pasas el cursor sobre un servicio
+  document.querySelectorAll('.serv').forEach((c) => c.addEventListener('pointerenter', () => { if (!ocupado && Math.random() < .3) esconderse(); }));
+  // Actividades al azar: se esconde, reaparece por un borde y a veces asusta
+  setInterval(() => {
+    if (document.hidden || ocupado || $('hoja').classList.contains('abierta')) return;
+    const r = Math.random();
+    if (r < .2 && Date.now() - ultimoSusto > 45000) bocaGigante();
+    else if (r < .55 && esconderse()) {}
+    else if (r < .65) { anim('salta'); decir('¿Me extrañaste? 😏'); }
+    else if (r < .8) { pose('dulces', 1500); lluviaDulces(x + 75, y + 120); decir('¡Dulces gratis… por ahora! 🍭'); }
+    else { anim('gira'); decir('🎵 Jejeje 🎵'); }
+  }, 14000);
+  setTimeout(() => decir('Toca lo que quieras… si te atreves 🎃', 2800), 1400);
+})();
+</script>
+</body>
+</html>
